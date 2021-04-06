@@ -23,7 +23,7 @@
 
     <servlet>
         <servlet-name>BeanstalkServlet</servlet-name>
-        <servlet-class>com.MohrShaji.servlet.BeanstalkServlet</servlet-class>
+        <servlet-class>servlet.BeanstalkServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
