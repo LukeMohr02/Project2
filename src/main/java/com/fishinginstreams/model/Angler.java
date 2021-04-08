@@ -22,9 +22,9 @@ public class Angler {
     //TODO: Angler -> Catche mapping
     List<Catch> catches;
 
-    {
-        catches = new ArrayList<>();
-    }
+//    {
+//        catches = new ArrayList<>();
+//    }
 
     public Angler() {
     }
