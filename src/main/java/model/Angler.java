@@ -18,7 +18,7 @@ public class Angler {
     int age;
     String state;
 
-    //TODO: Angler -> Catches mapping
+    //TODO: Angler -> Catche mapping
     List<Catch> catches;
 
     {
