@@ -17,11 +17,11 @@ public class Fish {
 
     @Id
     @GeneratedValue
-    int id;
-    String species;
-    double length;
-    double weight;
-    Enum habitat;
-    Enum dangerLevel;
-    URI image;
+    private int id;
+    private String species;
+    private double length;
+    private double weight;
+    private Enum habitat;
+    private Enum dangerLevel;
+    private URI image;
 }

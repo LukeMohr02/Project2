@@ -16,9 +16,9 @@ public class Catch {
 
     @Id
     @GeneratedValue
-    int id;
+    private int id;
     //TODO: change from ints to objects
-    int userId;
-    int fishId;
-    int gearId;
+    private int userId;
+    private int fishId;
+    private int gearId;
 }
