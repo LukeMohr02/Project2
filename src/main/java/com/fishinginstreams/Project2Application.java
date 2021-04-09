@@ -2,6 +2,10 @@ package com.fishinginstreams;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+
+import javax.persistence.Entity;
 
 @SpringBootApplication
 public class Project2Application {
