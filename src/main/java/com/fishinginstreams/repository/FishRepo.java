@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface FishRepo extends JpaRepository<Fish, Integer> {
 
-    List<Fish> findAll();
 }

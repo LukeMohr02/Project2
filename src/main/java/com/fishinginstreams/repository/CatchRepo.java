@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface CatchRepo extends JpaRepository<Catch, Integer> {
 
-    List<Catch> findAll();
 }

@@ -1,8 +1,11 @@
 com\fishinginstreams\repository\CatchRepo.class
 com\fishinginstreams\Project2Application.class
+com\fishinginstreams\controller\AnglerController.class
 com\fishinginstreams\model\Catch.class
 com\fishinginstreams\controller\CatchController.class
 com\fishinginstreams\model\Gear.class
+com\fishinginstreams\repository\AnglerRepo.class
+com\fishinginstreams\model\Angler.class
 com\fishinginstreams\model\Fish.class
 com\fishinginstreams\ServletInitializer.class
 com\fishinginstreams\controller\FishController.class
