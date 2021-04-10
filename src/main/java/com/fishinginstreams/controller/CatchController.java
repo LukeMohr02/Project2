@@ -1,7 +1,7 @@
 package com.fishinginstreams.controller;
 
-import com.fishinginstreams.model.Fish;
-import com.fishinginstreams.repository.FishRepo;
+import com.fishinginstreams.model.Catch;
+import com.fishinginstreams.repository.CatchRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +16,15 @@ import java.util.List;
 public class CatchController {
 
     @Autowired
-    FishRepo repo;
+    CatchRepo repo;
 
     @GetMapping
-    public @ResponseBody List<Fish> getAllFish() {
+    public @ResponseBody List<Catch> getAllCatches() {
         return repo.findAll();
     }
 
     @PostMapping
-    public @ResponseBody Fish save(Fish f) {
-        return repo.save(f);
+    public @ResponseBody Catch save(Catch c) {
+        return repo.save(c);
     }
 }

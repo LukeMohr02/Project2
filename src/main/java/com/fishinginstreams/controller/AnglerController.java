@@ -1,13 +1,12 @@
 package com.fishinginstreams.controller;
+
 import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.repository.AnglerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -20,12 +19,12 @@ public class AnglerController {
     AnglerRepo repo;
 
     @GetMapping
-    public @ResponseBody Page<Angler> getAllAngler(@RequestParam("page") int page, @RequestParam("offset") int offset){
-        return repo.findAll(PageRequest.of(page, offset));
+    public @ResponseBody List<Angler> getAllAnglers() {
+        return repo.findAll();
     }
 
-    @GetMapping
-    public @ResponseBody Angler getAnglerByUsername(@RequestParam("username") String username){
-        return repo.findByUsername(username);
+    @PostMapping
+    public @ResponseBody Angler save(Angler a) {
+        return repo.save(a);
     }
 }
