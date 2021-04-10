@@ -1,12 +1,11 @@
 package com.fishinginstreams.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -17,8 +16,13 @@ public class Catch {
     @Id
     @GeneratedValue
     private int id;
-    //TODO: change from ints to objects
-    private int userId;
-    private int fishId;
-    private int gearId;
+    @NotNull
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Angler angler;
+    @NotNull
+    @OneToOne
+    private Fish fish;
+    @NotNull
+    @OneToOne
+    private Gear gear;
 }

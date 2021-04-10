@@ -16,12 +16,12 @@ public class Gear {
 
     @Id
     @GeneratedValue
-    int id;
-    Enum rod;
-    Enum fishhook;
-    Enum bait;
-    Enum lure;
-    Enum bobber;
-    double sinkWeight;
+    private int id;
+    private Enum rod;
+    private Enum fishhook;
+    private Enum bait;
+    private Enum lure;
+    private Enum bobber;
+    private double sinkWeight;
 
 }

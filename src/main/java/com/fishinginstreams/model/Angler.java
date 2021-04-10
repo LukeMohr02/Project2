@@ -1,5 +1,6 @@
 package com.fishinginstreams.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,28 +20,24 @@ public class Angler implements UserDetails {
 
     @Id
     @GeneratedValue
-    int id;
-    String username;
-    String password;
-    String firstName;
-    String lastName;
-    int age;
-    String state;
+    private int id;
+    @NotNull
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String state;
 
     // UserDetail fields
-    // TODO: figure out how to set these
-    ArrayList<? extends GrantedAuthority> authorities;
-    boolean accountNonExpired;
-    boolean accountNonLocked;
-    boolean credentialsNonExpired;
-    boolean enabled;
+    private ArrayList<? extends GrantedAuthority> authorities;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
 
-//    @OneToMany(mappedBy = "userid", cascade = CascadeType.ALL)
-    ArrayList<Catch> catches;
+    private ArrayList<Catch> catches;
 
-    {
-//        catches = new ArrayList<>();
-    }
-
+    private ArrayList<Groups> groups;
 
 }
