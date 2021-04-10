@@ -3,6 +3,7 @@ com\fishinginstreams\security\controller\AuthenticationController.class
 com\fishinginstreams\security\model\AuthenticationRequest.class
 com\fishinginstreams\repository\CatchRepo.class
 com\fishinginstreams\Project2Application.class
+com\fishinginstreams\filters\JwtRequestFilter.class
 com\fishinginstreams\controller\AnglerController.class
 com\fishinginstreams\controller\GearController.class
 com\fishinginstreams\model\Catch.class
