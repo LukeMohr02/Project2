@@ -3,13 +3,12 @@ package com.fishinginstreams.controller;
 import com.fishinginstreams.model.Fish;
 import com.fishinginstreams.repository.FishRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/fish")
@@ -19,12 +18,26 @@ public class FishController {
     FishRepo repo;
 
     @GetMapping
-    public @ResponseBody List<Fish> getAllFish() {
-        return repo.findAll();
+    public @ResponseBody Page<Fish> getAllFish(
+            @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+            @RequestParam(name = "offset", defaultValue = "10", required = false) int offset) {
+        return repo.findAll(PageRequest.of(page, offset));
+    }
+
+    @GetMapping("/{id}")
+    public @ResponseBody Fish getFishById(@PathVariable(name = "id") int id) {
+        return repo.getOne(id);
     }
 
     @PostMapping
     public @ResponseBody Fish save(Fish f) {
         return repo.save(f);
+    }
+
+    @DeleteMapping("/{id}")
+    public @ResponseBody Fish deleteFish(@PathVariable("id") int id) {
+        Fish fish = repo.getOne(id);
+        repo.delete(fish);
+        return fish;
     }
 }

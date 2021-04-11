@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Groups {
+public class Groop {
 
     @Id
     @GeneratedValue

@@ -1,6 +1,5 @@
 package com.fishinginstreams.model;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,20 +7,19 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
 import java.util.ArrayList;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(indexes = {@Index(name = "username_index", columnList = "username", unique = true)})
 public class Angler implements UserDetails {
 
     @Id
     @GeneratedValue
     private int id;
-    @NotNull
+    @Column(unique = true, nullable = false)
     private String username;
     private String password;
     private String firstName;
@@ -38,6 +36,6 @@ public class Angler implements UserDetails {
 
     private ArrayList<Catch> catches;
 
-    private ArrayList<Groups> groups;
+    private ArrayList<Groop> groups;
 
 }
