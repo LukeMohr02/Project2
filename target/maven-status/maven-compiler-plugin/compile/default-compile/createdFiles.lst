@@ -11,7 +11,6 @@ com\fishinginstreams\controller\FishController.class
 com\fishinginstreams\advice\LoggingAspect.class
 com\fishinginstreams\repository\FishRepo.class
 com\fishinginstreams\security\SecurityConfigurer.class
-com\fishinginstreams\model\Groups.class
 com\fishinginstreams\security\controller\AuthenticationController.class
 com\fishinginstreams\security\model\AuthenticationRequest.class
 com\fishinginstreams\repository\CatchRepo.class
