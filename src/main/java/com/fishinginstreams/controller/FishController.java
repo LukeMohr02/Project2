@@ -30,7 +30,7 @@ public class FishController {
     }
 
     @PostMapping
-    public @ResponseBody Fish save(Fish f) {
+    public @ResponseBody Fish save(@RequestBody Fish f) {
         return repo.save(f);
     }
 

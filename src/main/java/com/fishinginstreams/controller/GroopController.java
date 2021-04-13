@@ -30,7 +30,7 @@ public class GroopController {
     }
 
     @PostMapping
-    public @ResponseBody Groop save(Groop g) {
+    public @ResponseBody Groop save(@RequestBody Groop g) {
         return repo.save(g);
     }
 

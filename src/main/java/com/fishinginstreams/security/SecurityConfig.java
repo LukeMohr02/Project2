@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
-public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private FisUserDetailsService fisUserDetailsService;
@@ -69,6 +69,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 );
 
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+        // Allows H2 to be viewed from a browser
+        http.headers().frameOptions().disable();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.fishinginstreams.controller;
 
 import com.fishinginstreams.model.Angler;
+import com.fishinginstreams.model.Catch;
 import com.fishinginstreams.repository.AnglerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,7 +29,7 @@ public class AnglerController {
     }
 
     @PostMapping
-    public @ResponseBody Angler save(Angler a) {
+    public @ResponseBody Angler save(@RequestBody Angler a) {
         return repo.save(a);
     }
 

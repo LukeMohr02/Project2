@@ -2,6 +2,7 @@ package com.fishinginstreams.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//@EqualsAndHashCode(exclude = "groups")
 @Table(indexes = {@Index(name = "username_index", columnList = "username", unique = true)})
 public class Angler implements UserDetails {
 
