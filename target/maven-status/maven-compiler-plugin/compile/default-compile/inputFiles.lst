@@ -1,4 +1,5 @@
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\Angler.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\HabitatType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\exception\IncorrectCredentialsException.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\Gear.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\model\AuthenticationRequest.java
@@ -6,12 +7,17 @@ C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishi
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\util\JwtUtil.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\FisUserDetailsService.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\repository\AnglerRepo.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\LureType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\PreCatch.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\RodType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\ServletInitializer.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\Fish.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\filters\JwtRequestFilter.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\GearController.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\SecurityConfig.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\AnglerController.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\BobberType.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\FishHookType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\Project2Application.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\Groop.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\FishController.java
@@ -20,8 +26,9 @@ C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishi
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\controller\AuthenticationController.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\GroopController.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\repository\FishRepo.java
-C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\SecurityConfigurer.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\repository\CatchRepo.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\repository\GearRepo.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\BaitType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\advice\LoggingAspect.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\DangerLevel.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\CatchController.java
