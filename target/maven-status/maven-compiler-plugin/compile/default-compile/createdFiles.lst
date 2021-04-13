@@ -1,6 +1,4 @@
 com\fishinginstreams\exception\IncorrectCredentialsException.class
-com\fishinginstreams\model\PreCatch.class
-com\fishinginstreams\enums\FishHookType.class
 com\fishinginstreams\Project2Application.class
 com\fishinginstreams\controller\AnglerController.class
 com\fishinginstreams\controller\GearController.class
@@ -14,6 +12,7 @@ com\fishinginstreams\repository\GearRepo.class
 com\fishinginstreams\controller\FishController.class
 com\fishinginstreams\advice\LoggingAspect.class
 com\fishinginstreams\repository\FishRepo.class
+com\fishinginstreams\security\SecurityConfigurer.class
 com\fishinginstreams\enums\LureType.class
 com\fishinginstreams\security\controller\AuthenticationController.class
 com\fishinginstreams\security\model\AuthenticationRequest.class
