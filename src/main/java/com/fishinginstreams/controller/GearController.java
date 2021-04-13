@@ -32,7 +32,7 @@ public class    GearController {
     }
 
     @PostMapping
-    public @ResponseBody Gear save(Gear g) {
+    public @ResponseBody Gear save(@RequestBody Gear g) {
         return repo.save(g);
     }
 

@@ -4,12 +4,14 @@ C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginst
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\model\Angler.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\controller\GroopController.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\repository\GearRepo.java
+C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\enums\DangerLevel.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\filters\JwtRequestFilter.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\model\Groop.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\security\controller\AuthenticationController.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\enums\BobberType.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\enums\RodType.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\util\JwtUtil.java
+C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\enums\HabitatType.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\Project2Application.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\repository\GroopRepo.java
 C:\Users\Joshua\Desktop\gitrepos\Project2\Project2\src\main\java\com\fishinginstreams\security\model\AuthenticationResponse.java
