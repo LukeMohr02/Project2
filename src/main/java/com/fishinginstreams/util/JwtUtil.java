@@ -22,7 +22,8 @@ public class JwtUtil {
     // TODO: this key should not be hardcoded, it should be in a configuration file OUTSIDE of the source code
     private final String SECURE_KEY = "4815162342";
     // Token expiration in milliseconds
-    private final int tokenExpiration = 36000000;
+    // TODO: change to 36000000
+    private final int tokenExpiration = Integer.MAX_VALUE;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
