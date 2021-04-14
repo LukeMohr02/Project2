@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GroopRepo extends JpaRepository<Groop, Integer> {
 
+    Groop findByName(String name);
 }

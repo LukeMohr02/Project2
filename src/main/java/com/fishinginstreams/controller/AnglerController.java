@@ -2,12 +2,16 @@ package com.fishinginstreams.controller;
 
 import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.model.Catch;
+import com.fishinginstreams.model.Groop;
 import com.fishinginstreams.repository.AnglerRepo;
+import com.fishinginstreams.repository.GroopRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/angler")
@@ -31,6 +35,17 @@ public class AnglerController {
     @PostMapping
     public @ResponseBody Angler save(@RequestBody Angler a) {
         return repo.save(a);
+    }
+
+    @PutMapping
+    public @ResponseBody Angler update(@RequestBody Angler a) {
+        Angler original = repo.findByUsername(a.getUsername());
+        int id = original.getId();
+
+        original = a;
+        original.setId(id);
+
+        return repo.save(original);
     }
 
     @DeleteMapping("/{username}")

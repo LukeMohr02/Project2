@@ -1,5 +1,7 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.exception.AlreadyInGroupException;
+import com.fishinginstreams.exception.NotInGroupException;
 import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.model.Groop;
 import com.fishinginstreams.repository.AnglerRepo;
@@ -10,12 +12,17 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/group")
 public class GroopController {
 
     @Autowired
     GroopRepo repo;
+
+    @Autowired
+    AnglerRepo anglerRepo;
 
     @GetMapping
     public @ResponseBody Page<Groop> getAllGroops(
@@ -32,6 +39,61 @@ public class GroopController {
     @PostMapping
     public @ResponseBody Groop save(@RequestBody Groop g) {
         return repo.save(g);
+    }
+
+    @PutMapping
+    public @ResponseBody Groop update(@RequestBody Groop g) {
+        Groop original = repo.findById(g.getId()).get();
+        int id = original.getId();
+
+        original = g;
+        original.setId(id);
+
+        return repo.save(original);
+    }
+
+    @PutMapping("/{group}/join")
+    public @ResponseBody Groop joinGroup(@PathVariable("group") String g, @RequestBody Angler a) {
+        Groop group = repo.findByName(g);
+        Angler angler = anglerRepo.findByUsername(a.getUsername());
+
+        List<Angler> anglers = group.getAnglers();
+        List<Groop> groups = angler.getGroups();
+
+        if (anglers.contains(angler) || groups.contains(group)) {
+            throw new AlreadyInGroupException(angler.getUsername(), g);
+        }
+
+        anglers.add(angler);
+        group.setAnglers(anglers);
+
+        groups.add(group);
+        angler.setGroups(groups);
+
+        anglerRepo.save(angler);
+        return repo.save(group);
+    }
+
+    @PutMapping("/{group}/leave")
+    public @ResponseBody Groop leaveGroup(@PathVariable("group") String g, @RequestBody Angler a) {
+        Groop group = repo.findByName(g);
+        Angler angler = anglerRepo.findByUsername(a.getUsername());
+
+        List<Angler> anglers = group.getAnglers();
+        List<Groop> groups = angler.getGroups();
+
+        if (!anglers.contains(angler) || !groups.contains(group)) {
+            throw new NotInGroupException(angler.getUsername(), g);
+        }
+
+        anglers.remove(angler);
+        group.setAnglers(anglers);
+
+        groups.remove(group);
+        angler.setGroups(groups);
+
+        anglerRepo.save(angler);
+        return repo.save(group);
     }
 
     @DeleteMapping("/{id}")

@@ -50,6 +50,17 @@ public class CatchController {
         return repo.save(c);
     }
 
+    @PutMapping
+    public @ResponseBody Catch update(@RequestBody Catch c) {
+        Catch original = repo.findById(c.getId()).get();
+        int id = original.getId();
+
+        original = c;
+        original.setId(id);
+
+        return repo.save(original);
+    }
+
     @DeleteMapping("/{id}")
     public @ResponseBody Catch deleteCatch(@PathVariable(name = "id") int id) {
         Catch c = repo.getOne(id);

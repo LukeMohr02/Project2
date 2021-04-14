@@ -1,5 +1,8 @@
 package com.fishinginstreams.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,12 +12,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 //@EqualsAndHashCode(exclude = "groups")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Table(indexes = {@Index(name = "username_index", columnList = "username", unique = true)})
 public class Angler implements UserDetails {
 
@@ -36,8 +41,10 @@ public class Angler implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
-    private ArrayList<Catch> catches;
+    @OneToMany(mappedBy = "angler")
+    private List<Catch> catches;
 
-    private ArrayList<Groop> groups;
+    @ManyToMany(mappedBy = "anglers")
+    private List<Groop> groups;
 
 }

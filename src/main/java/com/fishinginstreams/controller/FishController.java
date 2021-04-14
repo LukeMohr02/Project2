@@ -1,5 +1,6 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.model.Fish;
 import com.fishinginstreams.repository.FishRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,17 @@ public class FishController {
     @PostMapping
     public @ResponseBody Fish save(@RequestBody Fish f) {
         return repo.save(f);
+    }
+
+    @PutMapping
+    public @ResponseBody Fish update(@RequestBody Fish f) {
+        Fish original = repo.findById(f.getId()).get();
+        int id = original.getId();
+
+        original = f;
+        original.setId(id);
+
+        return repo.save(original);
     }
 
     @DeleteMapping("/{id}")

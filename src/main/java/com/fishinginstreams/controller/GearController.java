@@ -1,5 +1,6 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.model.Fish;
 import com.fishinginstreams.model.Gear;
 import com.fishinginstreams.repository.FishRepo;
@@ -34,6 +35,17 @@ public class    GearController {
     @PostMapping
     public @ResponseBody Gear save(@RequestBody Gear g) {
         return repo.save(g);
+    }
+
+    @PutMapping
+    public @ResponseBody Gear update(@RequestBody Gear g) {
+        Gear original = repo.findById(g.getId()).get();
+        int id = original.getId();
+
+        original = g;
+        original.setId(id);
+
+        return repo.save(original);
     }
 
     @DeleteMapping("/{id}")
