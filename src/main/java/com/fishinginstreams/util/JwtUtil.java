@@ -6,9 +6,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.function.Function;
 
 /**
@@ -19,11 +23,14 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    // TODO: this key should not be hardcoded, it should be in a configuration file OUTSIDE of the source code
-    private final String SECURE_KEY = "4815162342";
     // Token expiration in milliseconds
-    // TODO: change to 36000000
-    private final int tokenExpiration = Integer.MAX_VALUE;
+    private static int TOKEN_EXPIRATION = Integer.MAX_VALUE;
+    // Security key defined in security.properties (separate from source code). Value is arbitrary.
+    private static String SECURE_KEY;
+
+    public JwtUtil() throws IOException {
+        readProperties();
+    }
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -56,7 +63,7 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration))
+                .setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
                 .signWith(SignatureAlgorithm.HS256, SECURE_KEY)
                 .compact();
     }
@@ -64,5 +71,21 @@ public class JwtUtil {
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    public static void readProperties() throws IOException, NumberFormatException {
+        Properties properties = new Properties();
+        String fileName = "security.properties";
+        InputStream inputStream = JwtUtil.class.getClassLoader().getResourceAsStream(fileName);
+
+        if (inputStream != null) {
+            properties.load(inputStream);
+        } else {
+            throw new FileNotFoundException("File not found: " + fileName);
+        }
+
+        // Can throw NumberFormatException
+        TOKEN_EXPIRATION = Integer.parseInt(properties.getProperty("token_expiration"));
+        SECURE_KEY = properties.getProperty("secure_key");
     }
 }

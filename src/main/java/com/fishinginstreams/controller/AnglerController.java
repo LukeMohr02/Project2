@@ -55,5 +55,4 @@ public class AnglerController {
         return angler;
     }
 
-    //TODO: postmapping for object mapping
 }

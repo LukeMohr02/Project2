@@ -103,5 +103,4 @@ public class GroopController {
         return groop;
     }
 
-    //TODO: postmapping for object mapping
 }
