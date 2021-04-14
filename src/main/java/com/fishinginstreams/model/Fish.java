@@ -1,6 +1,5 @@
 package com.fishinginstreams.model;
 
-import com.fishinginstreams.enums.DangerLevel;
 import com.fishinginstreams.enums.HabitatType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +23,6 @@ public class Fish {
     private double length;
     private double weight;
     private HabitatType habitat;
-    private DangerLevel dangerLevel;
+    private String dangerLevel;
     private URI image;
 }
