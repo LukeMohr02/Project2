@@ -18,10 +18,13 @@ com\fishinginstreams\repository\FishRepo.class
 com\fishinginstreams\enums\LureType.class
 com\fishinginstreams\security\controller\AuthenticationController.class
 com\fishinginstreams\security\model\AuthenticationRequest.class
+com\fishinginstreams\exception\NotInGroupException.class
 com\fishinginstreams\repository\CatchRepo.class
 com\fishinginstreams\filters\JwtRequestFilter.class
 com\fishinginstreams\enums\HabitatType.class
 com\fishinginstreams\model\Groop.class
+com\fishinginstreams\service\ExceptionHandler.class
+com\fishinginstreams\exception\UniqueConstraintViolationException.class
 com\fishinginstreams\controller\GroopController.class
 com\fishinginstreams\enums\RodType.class
 com\fishinginstreams\repository\AnglerRepo.class
@@ -30,4 +33,6 @@ com\fishinginstreams\model\Fish.class
 com\fishinginstreams\repository\GroopRepo.class
 com\fishinginstreams\security\FisUserDetailsService.class
 com\fishinginstreams\ServletInitializer.class
+com\fishinginstreams\exception\NotNullConstraintViolationException.class
+com\fishinginstreams\exception\AlreadyInGroupException.class
 com\fishinginstreams\security\model\AuthenticationResponse.class

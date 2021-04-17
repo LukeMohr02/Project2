@@ -11,7 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Controller
 @RequestMapping("/gear")
@@ -39,13 +41,17 @@ public class    GearController {
 
     @PutMapping
     public @ResponseBody Gear update(@RequestBody Gear g) {
-        Gear original = repo.findById(g.getId()).get();
-        int id = original.getId();
+        try {
+            Gear original = repo.findById(g.getId()).get();
+            int id = original.getId();
 
-        original = g;
-        original.setId(id);
+            original = g;
+            original.setId(id);
 
-        return repo.save(original);
+            return repo.save(original);
+        } catch (NoSuchElementException e) {
+            throw new EntityNotFoundException("No entry found with gearId: " + g.getId());
+        }
     }
 
     @DeleteMapping("/{id}")

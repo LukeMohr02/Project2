@@ -1,16 +1,25 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.exception.NotNullConstraintViolationException;
+import com.fishinginstreams.exception.UniqueConstraintViolationException;
 import com.fishinginstreams.model.*;
 import com.fishinginstreams.repository.AnglerRepo;
 import com.fishinginstreams.repository.CatchRepo;
 import com.fishinginstreams.repository.FishRepo;
 import com.fishinginstreams.repository.GearRepo;
+import com.fishinginstreams.service.ExceptionHandler;
+import org.hibernate.PropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.Null;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
@@ -44,21 +53,43 @@ public class CatchController {
     @PostMapping
     public @ResponseBody Catch save(@RequestBody PreCatch preCatch) {
         Catch c = new Catch();
-        c.setAngler(anglerRepo.findByUsername(preCatch.getUsername()));
-        c.setFish(fishRepo.findById(preCatch.getFishId()).get());
-        c.setGear(gearRepo.findById(preCatch.getGearId()).get());
+        String username = preCatch.getUsername();
+        c.setAngler(anglerRepo.findByUsername(username));
+        ExceptionHandler eh = new ExceptionHandler();
+
+        eh.NotNullConstraintViolation(new String[]{preCatch.getUsername()},
+                                      new String[]{"username"});
+        eh.NotNullConstraintViolation(new Integer[]{preCatch.getFishId(), preCatch.getGearId()},
+                                      new String[]{"fishId", "gearId"});
+
+        try {
+            c.setFish(fishRepo.findById(preCatch.getFishId()).get());
+            c.setGear(gearRepo.findById(preCatch.getGearId()).get());
+        } catch (NoSuchElementException e) {
+            // Empty catch
+        };
+
+        eh.EntityNotFound(new Object[]{c.getAngler(), c.getFish(), c.getGear()},
+                          new String[]{"username", "fishId","gearId"});
+
         return repo.save(c);
+
     }
 
     @PutMapping
     public @ResponseBody Catch update(@RequestBody Catch c) {
-        Catch original = repo.findById(c.getId()).get();
-        int id = original.getId();
 
-        original = c;
-        original.setId(id);
+        try {
+            Catch original = repo.findById(c.getId()).get();
+            int id = original.getId();
 
-        return repo.save(original);
+            original = c;
+            original.setId(id);
+
+            return repo.save(original);
+        } catch (NoSuchElementException e) {
+            throw new EntityNotFoundException("No entry found with catchId: " + c.getId());
+        }
     }
 
     @DeleteMapping("/{id}")

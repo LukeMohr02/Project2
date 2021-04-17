@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
@@ -37,13 +39,18 @@ public class FishController {
 
     @PutMapping
     public @ResponseBody Fish update(@RequestBody Fish f) {
-        Fish original = repo.findById(f.getId()).get();
-        int id = original.getId();
 
-        original = f;
-        original.setId(id);
+        try {
+            Fish original = repo.findById(f.getId()).get();
+            int id = original.getId();
 
-        return repo.save(original);
+            original = f;
+            original.setId(id);
+
+            return repo.save(original);
+        } catch (NoSuchElementException e) {
+            throw new EntityNotFoundException("No entry found with fishId: " + f.getId());
+        }
     }
 
     @DeleteMapping("/{id}")
