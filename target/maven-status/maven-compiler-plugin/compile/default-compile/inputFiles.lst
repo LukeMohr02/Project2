@@ -12,6 +12,7 @@ C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishi
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\RodType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\ServletInitializer.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\Fish.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\exception\AlreadyInGroupException.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\filters\JwtRequestFilter.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\GearController.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\SecurityConfig.java
@@ -20,15 +21,18 @@ C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishi
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\FishHookType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\Project2Application.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\Groop.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\exception\UniqueConstraintViolationException.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\advice\ExceptionAspect.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\FishController.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\exception\NotNullConstraintViolationException.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\model\Catch.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\model\AuthenticationResponse.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\security\controller\AuthenticationController.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\GroopController.java
+C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\exception\NotInGroupException.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\repository\FishRepo.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\repository\CatchRepo.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\repository\GearRepo.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\BaitType.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\advice\LoggingAspect.java
-C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\enums\DangerLevel.java
 C:\Users\Luke\Desktop\Computer Science\gitrepos\Project2\src\main\java\com\fishinginstreams\controller\CatchController.java

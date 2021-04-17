@@ -12,7 +12,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Controller
 @RequestMapping("/group")
@@ -43,19 +45,31 @@ public class GroopController {
 
     @PutMapping
     public @ResponseBody Groop update(@RequestBody Groop g) {
-        Groop original = repo.findById(g.getId()).get();
-        int id = original.getId();
+        try {
+            Groop original = repo.findById(g.getId()).get();
+            int id = original.getId();
 
-        original = g;
-        original.setId(id);
+            original = g;
+            original.setId(id);
 
-        return repo.save(original);
+            return repo.save(original);
+        } catch (NoSuchElementException e) {
+            throw new EntityNotFoundException("No entry found with groupId: " + g.getId());
+        }
     }
 
     @PutMapping("/{group}/join")
     public @ResponseBody Groop joinGroup(@PathVariable("group") String g, @RequestBody Angler a) {
         Groop group = repo.findByName(g);
         Angler angler = anglerRepo.findByUsername(a.getUsername());
+
+        if (group == null) {
+            throw new EntityNotFoundException("No entry found with group name: " + g);
+        }
+
+        if (angler == null) {
+            throw new EntityNotFoundException("No entry found with username: " + a.getUsername());
+        }
 
         List<Angler> anglers = group.getAnglers();
         List<Groop> groups = angler.getGroups();

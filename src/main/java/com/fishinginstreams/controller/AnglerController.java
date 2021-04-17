@@ -1,16 +1,21 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.exception.NotNullConstraintViolationException;
+import com.fishinginstreams.exception.UniqueConstraintViolationException;
 import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.model.Catch;
 import com.fishinginstreams.model.Groop;
 import com.fishinginstreams.repository.AnglerRepo;
 import com.fishinginstreams.repository.GroopRepo;
+import org.hibernate.PropertyValueException;
+import org.springframework.beans.PropertyAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Controller
@@ -34,12 +39,23 @@ public class AnglerController {
 
     @PostMapping
     public @ResponseBody Angler save(@RequestBody Angler a) {
-        return repo.save(a);
+        try {
+            return repo.save(a);
+        } catch (PropertyValueException e) {
+            throw new NotNullConstraintViolationException("username");
+        } catch (Exception e) {
+            throw new UniqueConstraintViolationException("username", a.getUsername());
+        }
     }
 
     @PutMapping
     public @ResponseBody Angler update(@RequestBody Angler a) {
         Angler original = repo.findByUsername(a.getUsername());
+
+        if (original == null) {
+            throw new EntityNotFoundException("No entry found with username: " + a.getUsername());
+        }
+
         int id = original.getId();
 
         original = a;
@@ -51,6 +67,11 @@ public class AnglerController {
     @DeleteMapping("/{username}")
     public Angler deleteAnglerById(@PathVariable("username") String username) {
         Angler angler = repo.findByUsername(username);
+
+        if (angler == null) {
+            throw new EntityNotFoundException("No entry found with username: " + username);
+        }
+
         repo.delete(angler);
         return angler;
     }
