@@ -6,7 +6,6 @@ com\fishinginstreams\security\SecurityConfig.class
 com\fishinginstreams\controller\AnglerController.class
 com\fishinginstreams\controller\GearController.class
 com\fishinginstreams\enums\BobberType.class
-com\fishinginstreams\enums\DangerLevel.class
 com\fishinginstreams\model\Catch.class
 com\fishinginstreams\controller\CatchController.class
 com\fishinginstreams\model\Gear.class

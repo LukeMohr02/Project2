@@ -20,13 +20,13 @@ public class FisUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Angler angler = repo.findByUsername(username);
+//        Angler angler = repo.findByUsername(username);
+//
+//        if (angler == null) {
+//            throw new UsernameNotFoundException("Username not found: " + username);
+//        }
 
-        if (angler == null) {
-            throw new UsernameNotFoundException("Username not found: " + username);
-        }
-
-//        return new User("un","pw",new ArrayList<>());
-        return repo.findByUsername(username);
+        return new User("un","pw",new ArrayList<>());
+//        return repo.findByUsername(username);
     }
 }
