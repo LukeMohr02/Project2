@@ -1,5 +1,6 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.exception.NoFishFoundByIdException;
 import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.model.Fish;
 import com.fishinginstreams.repository.FishRepo;
@@ -49,7 +50,7 @@ public class FishController {
 
             return repo.save(original);
         } catch (NoSuchElementException e) {
-            throw new EntityNotFoundException("No entry found with fishId: " + f.getId());
+            throw new NoFishFoundByIdException(f.getId());
         }
     }
 
