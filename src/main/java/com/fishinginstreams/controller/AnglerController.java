@@ -1,5 +1,6 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.exception.NoAnglerFoundByUsername;
 import com.fishinginstreams.exception.NotNullConstraintViolationException;
 import com.fishinginstreams.exception.UniqueConstraintViolationException;
 import com.fishinginstreams.model.Angler;
@@ -53,7 +54,7 @@ public class AnglerController {
         Angler original = repo.findByUsername(a.getUsername());
 
         if (original == null) {
-            throw new EntityNotFoundException("No entry found with username: " + a.getUsername());
+            throw new NoAnglerFoundByUsername(a.getUsername());
         }
 
         int id = original.getId();
@@ -69,7 +70,7 @@ public class AnglerController {
         Angler angler = repo.findByUsername(username);
 
         if (angler == null) {
-            throw new EntityNotFoundException("No entry found with username: " + username);
+            throw new NoAnglerFoundByUsername(username);
         }
 
         repo.delete(angler);
