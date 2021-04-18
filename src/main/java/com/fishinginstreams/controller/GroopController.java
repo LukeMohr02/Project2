@@ -34,7 +34,7 @@ public class GroopController {
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody Groop getAnglerById(@PathVariable("id") int id) {
+    public @ResponseBody Groop getGroopById(@PathVariable("id") int id) {
         return repo.getOne(id);
     }
 
