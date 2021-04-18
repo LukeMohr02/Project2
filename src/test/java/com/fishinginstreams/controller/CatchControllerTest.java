@@ -1,6 +1,6 @@
 package com.fishinginstreams.controller;
 
-import com.fishinginstreams.exception.NoCatchFoundById;
+import com.fishinginstreams.exception.NoCatchFoundByIdException;
 import com.fishinginstreams.model.*;
 import com.fishinginstreams.repository.AnglerRepo;
 import com.fishinginstreams.repository.CatchRepo;
@@ -137,7 +137,7 @@ public class CatchControllerTest {
                 .content(new Gson().toJson(newCatch))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
-                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof NoCatchFoundById));
+                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof NoCatchFoundByIdException));
     }
 
     @Test

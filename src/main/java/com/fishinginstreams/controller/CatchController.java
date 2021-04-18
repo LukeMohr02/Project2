@@ -1,27 +1,19 @@
 package com.fishinginstreams.controller;
 
-import com.fishinginstreams.exception.NoCatchFoundById;
-import com.fishinginstreams.exception.NotNullConstraintViolationException;
-import com.fishinginstreams.exception.UniqueConstraintViolationException;
+import com.fishinginstreams.exception.NoCatchFoundByIdException;
 import com.fishinginstreams.model.*;
 import com.fishinginstreams.repository.AnglerRepo;
 import com.fishinginstreams.repository.CatchRepo;
 import com.fishinginstreams.repository.FishRepo;
 import com.fishinginstreams.repository.GearRepo;
 import com.fishinginstreams.service.ExceptionHandler;
-import org.hibernate.PropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
-import javax.validation.constraints.Null;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/catch")
@@ -89,7 +81,7 @@ public class CatchController {
 
             return repo.save(original);
         } catch (NoSuchElementException e) {
-            throw new NoCatchFoundById(c.getId());
+            throw new NoCatchFoundByIdException(c.getId());
         }
     }
 

@@ -1,6 +1,6 @@
 package com.fishinginstreams.controller;
 
-import com.fishinginstreams.exception.NoAnglerFoundByUsername;
+import com.fishinginstreams.exception.NoAnglerFoundByUsernameException;
 import com.fishinginstreams.exception.NotNullConstraintViolationException;
 import com.fishinginstreams.exception.UniqueConstraintViolationException;
 import com.fishinginstreams.model.Angler;
@@ -131,7 +131,7 @@ public class AnglerControllerTest {
                 .content(new Gson().toJson(newAnglerWithUsername))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
-                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof NoAnglerFoundByUsername));
+                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof NoAnglerFoundByUsernameException));
     }
 
     @Test
@@ -153,6 +153,6 @@ public class AnglerControllerTest {
                 .content(new Gson().toJson(newAnglerWithUsername))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
-                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof NoAnglerFoundByUsername));
+                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof NoAnglerFoundByUsernameException));
     }
 }
