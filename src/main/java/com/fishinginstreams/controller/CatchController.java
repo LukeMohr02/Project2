@@ -1,5 +1,6 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.exception.NoCatchFoundById;
 import com.fishinginstreams.exception.NotNullConstraintViolationException;
 import com.fishinginstreams.exception.UniqueConstraintViolationException;
 import com.fishinginstreams.model.*;
@@ -88,7 +89,7 @@ public class CatchController {
 
             return repo.save(original);
         } catch (NoSuchElementException e) {
-            throw new EntityNotFoundException("No entry found with catchId: " + c.getId());
+            throw new NoCatchFoundById(c.getId());
         }
     }
 
