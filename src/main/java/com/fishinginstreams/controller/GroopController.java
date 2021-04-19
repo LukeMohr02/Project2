@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/group")
 public class GroopController {
 

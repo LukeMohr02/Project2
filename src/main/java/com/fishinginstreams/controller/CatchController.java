@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.NoSuchElementException;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/catch")
 public class CatchController {
 

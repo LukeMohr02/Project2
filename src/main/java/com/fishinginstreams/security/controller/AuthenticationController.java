@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 // TODO: frontend client should hold on to JWT in the request and send it back in a response header
 //      {"Authorization":"Bearer <jwt>"}
 @Controller
+@CrossOrigin
 @RequestMapping("/authenticate")
 public class AuthenticationController {
 

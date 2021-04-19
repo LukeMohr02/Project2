@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/fish")
 public class FishController {
 
