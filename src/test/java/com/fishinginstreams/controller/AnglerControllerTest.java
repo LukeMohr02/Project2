@@ -137,7 +137,7 @@ public class AnglerControllerTest {
     @Test
     public void testDelete() throws Exception{
         Mockito.doReturn(newAnglerWithUsername).when(mockAnglerRepo).findByUsername("Test");
-        Mockito.doNothing().when(mockAnglerRepo).delete(newAnglerWithUsername);
+//        Mockito.doNothing().when(mockAnglerRepo).delete(newAnglerWithUsername);
         mockMvc.perform(MockMvcRequestBuilders.delete("/angler/{username}", "Test")
                 .content(new Gson().toJson(newAnglerWithUsername))
                 .contentType(MediaType.APPLICATION_JSON))

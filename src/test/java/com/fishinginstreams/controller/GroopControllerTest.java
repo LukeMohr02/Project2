@@ -50,15 +50,14 @@ public class GroopControllerTest {
     private AnglerRepo mockAnglerRepo;
 
     List<Groop> groopList = new ArrayList<>();
-    Page<Groop> groopPage;
-    Groop newGroop;
     List<Angler> anglerList = new ArrayList<>();
-    Page<Angler> anglerPage;
-    Angler newAngler;
     List<Angler> joinAnglerList = new ArrayList<>();
     List<Groop> joinGroopList = new ArrayList<>();
     List<Angler> leaveAnglerList = new ArrayList<>();
     List<Groop> leaveGroopList = new ArrayList<>();
+    Page<Groop> groopPage;
+    Groop newGroop;
+    Angler newAngler;
     Angler leaveAngler;
     Groop leaveGroop;
 
@@ -166,6 +165,7 @@ public class GroopControllerTest {
         Mockito.doReturn(newGroop).when(mockGroopRepo).getOne(newGroop.getId());
         Mockito.doNothing().when(mockGroopRepo).delete(newGroop);
         mockMvc.perform(MockMvcRequestBuilders.delete("/group/{id}", newGroop.getId())
+                .content(new Gson().toJson(newGroop))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
         verify(mockGroopRepo, times(1)).getOne(newGroop.getId());
