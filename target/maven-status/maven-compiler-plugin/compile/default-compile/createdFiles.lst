@@ -2,6 +2,7 @@ com\fishinginstreams\exception\IncorrectCredentialsException.class
 com\fishinginstreams\model\PreCatch.class
 com\fishinginstreams\enums\FishHookType.class
 com\fishinginstreams\Project2Application.class
+com\fishinginstreams\exception\NoFishFoundByIdException.class
 com\fishinginstreams\security\SecurityConfig.class
 com\fishinginstreams\controller\AnglerController.class
 com\fishinginstreams\controller\GearController.class
@@ -10,6 +11,7 @@ com\fishinginstreams\model\Catch.class
 com\fishinginstreams\controller\CatchController.class
 com\fishinginstreams\model\Gear.class
 com\fishinginstreams\enums\BaitType.class
+com\fishinginstreams\exception\NoAnglerFoundByUsernameException.class
 com\fishinginstreams\util\JwtUtil.class
 com\fishinginstreams\repository\GearRepo.class
 com\fishinginstreams\controller\FishController.class
@@ -22,6 +24,7 @@ com\fishinginstreams\exception\NotInGroupException.class
 com\fishinginstreams\repository\CatchRepo.class
 com\fishinginstreams\filters\JwtRequestFilter.class
 com\fishinginstreams\enums\HabitatType.class
+com\fishinginstreams\exception\NoCatchFoundByIdException.class
 com\fishinginstreams\model\Groop.class
 com\fishinginstreams\service\ExceptionHandler.class
 com\fishinginstreams\exception\UniqueConstraintViolationException.class

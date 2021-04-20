@@ -8,7 +8,8 @@ import com.fishinginstreams.repository.AnglerRepo;
 import com.google.gson.Gson;
 import org.hibernate.PropertyValueException;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class AnglerControllerTest {
     Angler newAngler;
     Angler newAnglerWithUsername;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
         newAngler = new Angler();
