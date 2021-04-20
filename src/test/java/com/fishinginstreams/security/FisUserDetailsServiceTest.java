@@ -2,8 +2,8 @@ package com.fishinginstreams.security;
 
 import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.repository.AnglerRepo;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -26,7 +26,7 @@ public class FisUserDetailsServiceTest {
 
     Angler testAngler;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         MockitoAnnotations.openMocks(this);
         testAngler = new Angler();
