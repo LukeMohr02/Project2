@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/gear")
 public class    GearController {
 

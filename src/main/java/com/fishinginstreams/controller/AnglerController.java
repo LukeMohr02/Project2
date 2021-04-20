@@ -1,24 +1,19 @@
 package com.fishinginstreams.controller;
 
+import com.fishinginstreams.exception.NoAnglerFoundByUsernameException;
 import com.fishinginstreams.exception.NotNullConstraintViolationException;
 import com.fishinginstreams.exception.UniqueConstraintViolationException;
 import com.fishinginstreams.model.Angler;
-import com.fishinginstreams.model.Catch;
-import com.fishinginstreams.model.Groop;
 import com.fishinginstreams.repository.AnglerRepo;
-import com.fishinginstreams.repository.GroopRepo;
 import org.hibernate.PropertyValueException;
-import org.springframework.beans.PropertyAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
-
 @Controller
+@CrossOrigin
 @RequestMapping("/angler")
 public class AnglerController {
 
@@ -53,7 +48,7 @@ public class AnglerController {
         Angler original = repo.findByUsername(a.getUsername());
 
         if (original == null) {
-            throw new EntityNotFoundException("No entry found with username: " + a.getUsername());
+            throw new NoAnglerFoundByUsernameException(a.getUsername());
         }
 
         int id = original.getId();
@@ -69,7 +64,7 @@ public class AnglerController {
         Angler angler = repo.findByUsername(username);
 
         if (angler == null) {
-            throw new EntityNotFoundException("No entry found with username: " + username);
+            throw new NoAnglerFoundByUsernameException(username);
         }
 
         repo.delete(angler);
