@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 public class FisUserDetailsServiceTest {
 
     @InjectMocks
-    FisUserDetailsService fisUserDetailsService = new FisUserDetailsService();
+    FisUserDetailsService fisUserDetailsService;
 
     @Mock
     AnglerRepo mockAnglerRepo;

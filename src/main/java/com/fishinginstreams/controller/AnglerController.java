@@ -70,5 +70,4 @@ public class AnglerController {
         repo.delete(angler);
         return angler;
     }
-
 }
