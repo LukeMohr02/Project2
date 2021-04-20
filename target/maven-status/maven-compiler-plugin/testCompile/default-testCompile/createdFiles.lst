@@ -1,1 +1,9 @@
+com\fishinginstreams\controller\FishControllerTest.class
+com\fishinginstreams\controller\GroopControllerTest.class
+com\fishinginstreams\controller\GearControllerTest.class
 com\fishinginstreams\Project2ApplicationTests.class
+com\fishinginstreams\controller\CatchControllerTest.class
+com\fishinginstreams\security\controller\AuthenticationControllerTest.class
+com\fishinginstreams\service\ExceptionHandlerTest.class
+com\fishinginstreams\controller\AnglerControllerTest.class
+com\fishinginstreams\security\FisUserDetailsServiceTest.class

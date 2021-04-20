@@ -5,7 +5,8 @@ import com.fishinginstreams.model.Gear;
 import com.fishinginstreams.repository.GearRepo;
 import com.google.gson.Gson;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class GearControllerTest {
     Page<Gear> gearPage;
     Gear newGear;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
         newGear = new Gear(55, RodType.NONE, FishHookType.NONE,

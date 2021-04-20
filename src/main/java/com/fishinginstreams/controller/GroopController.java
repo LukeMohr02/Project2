@@ -112,7 +112,7 @@ public class GroopController {
     }
 
     @DeleteMapping("/{id}")
-    public Groop deleteAnglerById(@PathVariable("id") int id) {
+    public @ResponseBody Groop deleteAnglerById(@PathVariable("id") int id) {
         Groop groop = repo.getOne(id);
         repo.delete(groop);
         return groop;

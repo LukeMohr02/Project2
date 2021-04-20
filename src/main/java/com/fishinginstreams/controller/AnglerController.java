@@ -60,7 +60,7 @@ public class AnglerController {
     }
 
     @DeleteMapping("/{username}")
-    public Angler deleteAnglerById(@PathVariable("username") String username) {
+    public @ResponseBody Angler deleteAnglerById(@PathVariable("username") String username) {
         Angler angler = repo.findByUsername(username);
 
         if (angler == null) {
@@ -70,5 +70,4 @@ public class AnglerController {
         repo.delete(angler);
         return angler;
     }
-
 }

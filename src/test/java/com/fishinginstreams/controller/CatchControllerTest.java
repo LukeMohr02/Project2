@@ -8,7 +8,8 @@ import com.fishinginstreams.repository.FishRepo;
 import com.fishinginstreams.repository.GearRepo;
 import com.google.gson.Gson;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,7 @@ public class CatchControllerTest {
     Gear newGear;
     Angler newAngler;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
         newCatch = new Catch();
