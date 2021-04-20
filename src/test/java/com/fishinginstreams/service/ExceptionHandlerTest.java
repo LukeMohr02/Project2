@@ -2,7 +2,8 @@ package com.fishinginstreams.service;
 
 import com.fishinginstreams.exception.NotNullConstraintViolationException;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -14,7 +15,7 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ExceptionHandlerTest {
 
-    @InjectMocks
+//    @InjectMocks
     ExceptionHandler exceptionHandler;
 
     Integer[] nullTestInteger;
@@ -22,8 +23,9 @@ public class ExceptionHandlerTest {
     String[] nullTestString;
     String[] columns;
 
-    @Before
+    @BeforeEach
     public void setup(){
+        exceptionHandler = new ExceptionHandler();
         nullTestInteger = new Integer[]{0};
         columns = new String[]{"Test Column"};
         nullTestString = new String[]{""};
