@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 @Controller
@@ -38,6 +39,15 @@ public class CatchController {
             @RequestParam(name = "offset", defaultValue = "10", required = false) int offset) {
         return repo.findAll(PageRequest.of(page, offset));
     }
+
+//    @GetMapping("/leaderboard")
+//    public @ResponseBody Page<Catch> getLeaderboardCatches(
+//            @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+//            @RequestParam(name = "offset", defaultValue = "10", required = false) int offset) {
+//        Page<Catch> catches = repo.findAll(PageRequest.of(page, offset));
+//        catches.get().sorted(Comparator.comparingDouble(fishRepo.findById(katch -> katch.getFish())));
+//        return catches;
+//    }
 
     @GetMapping("/{id}")
     public @ResponseBody Catch getCatchById(@PathVariable(name = "id") int id) {
