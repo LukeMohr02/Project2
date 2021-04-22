@@ -7,8 +7,9 @@ import com.fishinginstreams.repository.CatchRepo;
 import com.fishinginstreams.repository.FishRepo;
 import com.fishinginstreams.repository.GearRepo;
 import com.google.gson.Gson;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -35,7 +37,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class CatchControllerTest {
 
@@ -83,7 +85,7 @@ public class CatchControllerTest {
     @Test
     public void testGetAllCatches() throws Exception{
         Mockito.doReturn(catchPage).when(mockCatchRepo).findAll(any(PageRequest.class));
-        mockMvc.perform(MockMvcRequestBuilders.get("/catch")
+        mockMvc.perform(MockMvcRequestBuilders.get("/catch?sortby=length")
                 .content(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk());
         verify(mockCatchRepo, times(1)).findAll(any(PageRequest.class));
@@ -99,7 +101,6 @@ public class CatchControllerTest {
         verify(mockCatchRepo, times(1)).getOne(1);
     }
 
-    // TODO: figure out why this is throwing an exception
     @Test
     public void testSave() throws Exception{
         Mockito.doReturn(newAngler).when(mockAnglerRepo).findByUsername(any(String.class));

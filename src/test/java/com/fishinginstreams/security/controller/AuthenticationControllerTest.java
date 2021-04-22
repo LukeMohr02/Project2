@@ -1,12 +1,16 @@
 package com.fishinginstreams.security.controller;
 
 import com.fishinginstreams.exception.IncorrectCredentialsException;
+import com.fishinginstreams.exception.NotNullConstraintViolationException;
+import com.fishinginstreams.exception.UniqueConstraintViolationException;
 import com.fishinginstreams.model.Angler;
 import com.fishinginstreams.repository.AnglerRepo;
 import com.fishinginstreams.security.FisUserDetailsService;
 import com.fishinginstreams.security.model.AuthenticationRequest;
 import com.fishinginstreams.util.JwtUtil;
 import com.google.gson.Gson;
+import org.hibernate.PropertyValueException;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -85,5 +89,27 @@ public class AuthenticationControllerTest {
                 .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof IncorrectCredentialsException));
         verify(mockFisUserDetailsService, times(1)).loadUserByUsername(any(String.class));
         verify(mockJwtUtil, times(1)).generateToken(null);
+    }
+
+    @Test
+    public void testCreateAuthenticationTokenWithPropertyValueException() throws Exception{
+        Mockito.doThrow(PropertyValueException.class).when(anglerRepo).save(any(Angler.class));
+        mockMvc.perform(MockMvcRequestBuilders.post("/authenticate/signup")
+                .content(new Gson().toJson(newAuthenticationRequest))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof NotNullConstraintViolationException));
+        verify(anglerRepo, times(1)).save(any(Angler.class));
+    }
+
+    @Test
+    public void testCreateAuthenticationTokenWithRuntimeException() throws Exception{
+        Mockito.doThrow(RuntimeException.class).when(anglerRepo).save(any(Angler.class));
+        mockMvc.perform(MockMvcRequestBuilders.post("/authenticate/signup")
+                .content(new Gson().toJson(newAuthenticationRequest))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(mvcResult -> assertTrue(mvcResult.getResolvedException() instanceof UniqueConstraintViolationException));
+        verify(anglerRepo, times(1)).save(any(Angler.class));
     }
 }

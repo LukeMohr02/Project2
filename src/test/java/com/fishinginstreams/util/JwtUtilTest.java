@@ -1,6 +1,7 @@
 package com.fishinginstreams.util;
 
 import io.jsonwebtoken.MalformedJwtException;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
