@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
@@ -25,13 +26,14 @@ public class FisUserDetailsServiceTest {
     AnglerRepo mockAnglerRepo;
 
     Angler testAngler;
+    Angler testNullAngler;
 
     @BeforeEach
     public void setUp(){
         MockitoAnnotations.openMocks(this);
         testAngler = new Angler();
         testAngler.setUsername("Test");
-        Angler testNullAngler = null;
+        testNullAngler = null;
     }
 
     @Test
@@ -39,6 +41,13 @@ public class FisUserDetailsServiceTest {
         Mockito.doReturn(testAngler).when(mockAnglerRepo).findByUsername(testAngler.getUsername());
         assertEquals(fisUserDetailsService.loadUserByUsername(testAngler.getUsername()), testAngler);
         verify(mockAnglerRepo, times(2)).findByUsername(testAngler.getUsername());
+    }
+
+    @Test
+    public void testLoadUserByUsernameUsernameNotFoundException(){
+        Mockito.doReturn(testNullAngler).when(mockAnglerRepo).findByUsername(testAngler.getUsername());
+        assertThrows(UsernameNotFoundException.class, () -> fisUserDetailsService.loadUserByUsername("Test"));
+        verify(mockAnglerRepo, times(1)).findByUsername(testAngler.getUsername());
     }
 
 }
