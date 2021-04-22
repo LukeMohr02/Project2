@@ -13,8 +13,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Controller
 @CrossOrigin
@@ -34,20 +37,22 @@ public class CatchController {
     GearRepo gearRepo;
 
     @GetMapping
-    public @ResponseBody Page<Catch> getAllCatches(
+    public @ResponseBody List<Catch> getAllCatches(
             @RequestParam(name = "page", defaultValue = "0", required = false) int page,
-            @RequestParam(name = "offset", defaultValue = "10", required = false) int offset) {
-        return repo.findAll(PageRequest.of(page, offset));
-    }
+            @RequestParam(name = "offset", defaultValue = "10", required = false) int offset,
+            @RequestParam(name = "sortby", defaultValue = "id", required = false) String sortBy) {
+        Page<Catch> catches = repo.findAll(PageRequest.of(page, offset));
 
-//    @GetMapping("/leaderboard")
-//    public @ResponseBody Page<Catch> getLeaderboardCatches(
-//            @RequestParam(name = "page", defaultValue = "0", required = false) int page,
-//            @RequestParam(name = "offset", defaultValue = "10", required = false) int offset) {
-//        Page<Catch> catches = repo.findAll(PageRequest.of(page, offset));
-//        catches.get().sorted(Comparator.comparingDouble(fishRepo.findById(katch -> katch.getFish())));
-//        return catches;
-//    }
+        return catches.get().sorted(Comparator.comparing(katch -> {
+            if (sortBy.equals("length")) {
+                return fishRepo.findById(katch.getFish().getId()).get().getLength();
+            } else if (sortBy.equals("weight")) {
+                return fishRepo.findById(katch.getFish().getId()).get().getWeight();
+            } else {
+                return (double) katch.getFish().getId();
+            }
+        })).collect(Collectors.toList());
+    }
 
     @GetMapping("/{id}")
     public @ResponseBody Catch getCatchById(@PathVariable(name = "id") int id) {
