@@ -4,9 +4,12 @@ import io.jsonwebtoken.MalformedJwtException;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +19,8 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
+//@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 public class JwtUtilTest {
 
     @InjectMocks
