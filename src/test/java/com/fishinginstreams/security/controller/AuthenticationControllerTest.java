@@ -60,7 +60,7 @@ public class AuthenticationControllerTest {
     @BeforeEach
     public void setUp(){
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
-        newAuthenticationRequest = new AuthenticationRequest("Test", "Test");
+        newAuthenticationRequest = new AuthenticationRequest("Test", "Test", "Test", "Test",0,"Test");
     }
 
     @Test

@@ -39,7 +39,7 @@ public class AuthenticationController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/{action}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest, @PathVariable("action") String action) throws Exception {
         
         String username = authenticationRequest.getUsername();
@@ -49,6 +49,10 @@ public class AuthenticationController {
             Angler registerer = new Angler();
             registerer.setUsername(username);
             registerer.setPassword(password);
+            registerer.setFirstName(authenticationRequest.getFirstName());
+            registerer.setLastName(authenticationRequest.getLastName());
+            registerer.setAge(authenticationRequest.getAge());
+            registerer.setState(authenticationRequest.getState());
 
             try {
                 repo.save(registerer);
