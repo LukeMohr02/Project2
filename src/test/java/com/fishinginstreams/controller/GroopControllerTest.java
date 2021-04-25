@@ -94,7 +94,7 @@ public class GroopControllerTest {
 
     @Test
     public void testGetAllGroups() throws Exception{
-        Mockito.doReturn(groopPage).when(mockGroopRepo).findAll(any(PageRequest.class));
+        Mockito.doReturn(groopList).when(mockGroopRepo).findAll(any(PageRequest.class));
         mockMvc.perform(MockMvcRequestBuilders.get("/group")
                 .content(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())

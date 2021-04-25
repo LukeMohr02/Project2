@@ -3,6 +3,7 @@ package com.fishinginstreams.controller;
 import com.fishinginstreams.exception.AlreadyInGroupException;
 import com.fishinginstreams.exception.NotInGroupException;
 import com.fishinginstreams.model.Angler;
+import com.fishinginstreams.model.Catch;
 import com.fishinginstreams.model.Groop;
 import com.fishinginstreams.repository.AnglerRepo;
 import com.fishinginstreams.repository.GroopRepo;
@@ -13,8 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Controller
 @CrossOrigin
@@ -28,10 +31,11 @@ public class GroopController {
     AnglerRepo anglerRepo;
 
     @GetMapping
-    public @ResponseBody Page<Groop> getAllGroops(
+    public @ResponseBody List<Groop> getAllGroops(
             @RequestParam(value = "page", defaultValue = "0", required = false) int page,
             @RequestParam(value = "offset", defaultValue = "10", required = false) int offset) {
-        return repo.findAll(PageRequest.of(page,offset));
+        return repo.findAll(PageRequest.of(page, offset)).get().collect(Collectors.toList());
+//        return repo.findAll(PageRequest.of(page,offset));
     }
 
     @GetMapping("/{id}")
