@@ -46,7 +46,7 @@ RESTful API used to expose resources through endpoints
 | /gear/{id}    | DELETE |  deletes gear with the given id  |
 
 ### Group
-| Endpoint | HTTP Verb | Usage |
+| Endpoint | HTTP  Verb | Usage |
 | --------- | ----------- | ----- |
 | /group    | GET | returns a page of all groups  |
 | /group/{id}      | GET  | returns a group with the given id  |
