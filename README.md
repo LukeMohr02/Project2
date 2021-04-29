@@ -1,5 +1,5 @@
 # FishBrook Backend
-RESTful API used to expose resources through endpoints
+RESTful API completely decoupled from frontend implementation. Used to expose resources through endpoints listed below.
 
 ### Tech Stack
 * __Java 8__
